@@ -67,6 +67,7 @@ public class BabyHashApplication {
                             System.out.println(ANSI_RED + " ==========> " + var13.toUpperCase() + ANSI_RESET);
                             System.out.println(ANSI_RED +" ==========> Mining time = " + var7 / 1000L + " sec" + ANSI_RESET);
                             System.out.println(ANSI_RED +" ==========> Number of iterations: " + var12 + ANSI_RESET);
+                            System.out.println(ANSI_RED + " ==========> Mining time = " + var7 / (1000L * 60) + " min" + ANSI_RESET);
                             System.out.println("");
                         } else if (var22.substring(0, 4).compareTo("0000") == 0 & !valuesPrintedQuatre) {
                             valuesPrintedQuatre = true;
@@ -74,6 +75,7 @@ public class BabyHashApplication {
                             long var7 = var14.getTime() - var2;
                             System.out.println(ANSI_BLUE + " ==========> " + var13.toUpperCase() + ANSI_RESET);
                             System.out.println(ANSI_BLUE +" ==========> Mining time = " + var7 / 1000L + " sec" + ANSI_RESET);
+                            System.out.println(ANSI_BLUE + " ==========> Mining time = " + var7 / (1000L * 60) + " min" + ANSI_RESET);
                             System.out.println(ANSI_BLUE +" ==========> Number of iterations: " + var12 + ANSI_RESET);
                             System.out.println("");
                         }else if (var22.substring(0, 3).compareTo("000") == 0 & !valuesPrintedTrois) {
@@ -83,6 +85,7 @@ public class BabyHashApplication {
                             System.out.println(ANSI_PURPLE + " ==========> " + var13.toUpperCase() + ANSI_RESET);
                             System.out.println(ANSI_PURPLE +" ==========> Mining time = " + var7 / 1000L + " sec" + ANSI_RESET);
                             System.out.println(ANSI_PURPLE +" ==========> Number of iterations: " + var12 + ANSI_RESET);
+                            System.out.println(ANSI_PURPLE + " ==========> Mining time = " + var7 / (1000L * 60) + " min" + ANSI_RESET);
                             System.out.println("");
                         }else if (var22.substring(0, 2).compareTo("00") == 0 & !valuesPrintedDeux) {
                             valuesPrintedDeux = true;
@@ -91,6 +94,7 @@ public class BabyHashApplication {
                             System.out.println(ANSI_GREEN + " ==========> " + var13.toUpperCase() + ANSI_RESET);
                             System.out.println(ANSI_GREEN +" ==========> Mining time = " + var7 / 1000L + " sec" + ANSI_RESET);
                             System.out.println(ANSI_GREEN +" ==========> Number of iterations: " + var12 + ANSI_RESET);
+                            System.out.println(ANSI_GREEN + " ==========> Mining time = " + var7 / (1000L * 60) + " min" + ANSI_RESET);
                             System.out.println("");
                         }
                     }
