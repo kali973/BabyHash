@@ -3,15 +3,16 @@ package com.example.babyhash;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Properties;
+import java.util.Scanner;
+
+import static java.util.Objects.hash;
 
 @SpringBootApplication
 public class BabyHashApplication {
@@ -20,6 +21,7 @@ public class BabyHashApplication {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
+    private static String var10;
 
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
         SpringApplication.run(BabyHashApplication.class, args);
@@ -39,10 +41,40 @@ public class BabyHashApplication {
                 case 1:
                     System.out.println("Enter some data for a small hash generation");
                     System.out.println("For BabyHash, all input data is converted to lower case");
+                    Properties prop = new Properties();
+                    InputStream input = null;
+
+                    try {
+                        input = new FileInputStream("src/main/resources/application.properties");
+                        prop.load(input);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    } finally {
+                        if (input != null) {
+                            try {
+                                input.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    Scanner scanner = new Scanner(System.in);
+                    String userInput = scanner.nextLine();
+                    String data = (userInput.isEmpty() ? prop.getProperty("header") : userInput).toLowerCase();
+
+                    System.out.println(data);
+
                     Date var1 = new Date();
                     long var2 = var1.getTime();
                     new GregorianCalendar(2018, 10, 28);
-                    String var10 = reader.readLine();
+
+                    if (data != null) {
+                         var10 = data;
+                    } else {
+                         var10 = reader.readLine();
+                    }
+
                     var10 = var10.toLowerCase();
                     String var11 = "FFFF";
 
