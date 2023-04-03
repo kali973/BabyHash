@@ -1,16 +1,24 @@
-import hashlib
+from hashlib import sha256
+import binascii
 
-header_hex = ("30000000" +  # version
-              "0000000000000000000000000000000000000000000000000000000000000000" +  # hashPrevBlock
-              "51f5de334085b92ce27c03888c726c9b2bb78069e55aeb6b236b03111580819a" +  # hashMerkleRoot
-              "1f5dddf3" +  # Time
-              "7af57690" +  # Target
-              "63f055cd9a816794" +  # Nonce
-              "6bfeb3c095be5da1442663985403867578")
+DATA = "0100000081cd02ab7e569e8bcd9317e2fe99f2de44d49ab2b8851ba4a308000000000000e320b6c2fffc8d750423db8b1eb942ae710e951ed797f7affc8892b0f1fc122bc7f5d74df2b9441a42a14695"
 
-header_bin = bytes.fromhex(header_hex)
+VERSION = "01000000"
+HASH_PREV_BLOCK = "81cd02ab7e569e8bcd9317e2fe99f2de44d49ab2b8851ba4a308000000000000"
+HASH_MERKLE_ROOT = "e320b6c2fffc8d750423db8b1eb942ae710e951ed797f7affc8892b0f1fc122b"
+TIME = "c7f5d74d"
+TARGET = "f2b9441a"
+NONCE = "42a14695"
 
-hash = hashlib.sha256(hashlib.sha256(header_bin).digest()).digest()
+HEADER_HEX = VERSION + HASH_PREV_BLOCK + HASH_MERKLE_ROOT + TIME + TARGET + NONCE
 
-print(hash.hex())
-print(hash[::-1].hex())
+HASH = sha256(sha256(binascii.unhexlify(HEADER_HEX)).digest()).digest()
+HASH_HEX = binascii.hexlify(HASH)
+
+data = []
+
+for i in range(0, len(HASH_HEX), 2):
+    data.append(HASH_HEX[i:i+2].decode("utf-8"))
+data.reverse()
+
+print(''.join(data))
